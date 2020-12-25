@@ -1,0 +1,108 @@
+@charset "utf-8";
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh
+}
+
+header {
+  height: 13%;
+  background-color: #000000;
+}
+
+footer {
+  height:30%;
+  background-color: black;
+  color: white;
+  padding-top: 30px;
+}
+
+header ul {
+  list-style: none;
+  padding-top:20px;
+}
+
+li {
+  list-style: none;
+}
+
+.topName{
+  float:left;
+  font-size: 30px;
+  margin-left: -30px;
+  color: white;
+}
+
+.topLog {
+  float:right;
+  padding-right: 15px;
+  padding-top: 10px;
+  color: white;
+}
+
+img {
+  width: auto;
+  height: 500px;
+  float: right;
+  padding-bottom: 50px;
+}
+
+.main1 h2 {
+  font-size: 30px;
+  padding: 70px 0px 30px 30px;
+}
+
+.main1 p {
+  padding:0px 0px 30px 30px;
+  font-size: 20px
+}
+
+.button {
+  color: white;
+  background: black;
+  width: 300px;
+  height: 50px;
+  font-size: 30px;
+  float:left;
+  margin-left: 90px;
+  margin-bottom: 150px; 
+
+}
+
+.point-tamekata{
+  margin-top: 150px;
+}
+
+.tukaikata {
+  list-style: none;
+  float: left;
+  font-size: 20px;
+  width:50%
+}
+
+
+
+.syousai {
+  list-style: none;
+  float: left;
+  padding-top: 35px;
+  padding-right: 50px;
+  padding-bottom: 150px;
+  font-size: 15px;
+  width 100%;
+}
+
+.photo {
+  float: left;
+  width:50%;
+  height: 30%;
+  padding-top: 30px;
+}
+
+
