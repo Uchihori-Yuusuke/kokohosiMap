@@ -46,13 +46,22 @@ li {
   color: white;
 }
 
+@media (min-width:1280px){
 img {
   width: auto;
   height: 500px;
   float: right;
   padding-bottom: 50px;
 }
+}
 
+@media (max-width:1279px){
+img  {
+  width: 100%;
+  height: auto;
+  padding-bottom: 50px;
+}
+}
 .main1 h2 {
   font-size: 30px;
   padding: 70px 0px 30px 30px;
@@ -105,4 +114,7 @@ img {
   padding-top: 30px;
 }
 
+.img_p {
+  width: 100%
+}
 
