@@ -2,31 +2,44 @@
 <html>
   <head>
         <meta charset="utf-8">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="newUser.css">
      <title>ここほしマップ</title>
   </head>
+  <header>
+    <ul>
+      <li class="topName">ここホシ</li>
+    </ul>
+  </header>
+
   <body>
    <form name="form1" action="newUser2.php" method="post">
+   <h2>今すぐ登録</h2>
     <p>名前</p>
-    <input type="text" id="name" name="name">
+    <input type="text" id="name" name="name" class="form">
     <p>メールアドレス</p>
-    <input type="email" id="email" name="email">
+    <input type="email" id="email" name="email" class="form">
     <p>性別</p>
      
-      <input type="radio" id="gender1" value="1" name=group1>男性
-      <input type="radio" id="gender2" value="2" name="group1">女性
+      <input type="radio" id="gender1" value="1" name=group1 class="form_radio">男性
+      <input type="radio" id="gender2" value="2" name="group1" class="form_radio">女性
     
     <p>生年月日</p>
-    <input type="number" id="born_year" name="year">
-    <input type="number" id="born_month" name="month">
-    <input type="number" id="born_date" name="date">
+    <input type="number" id="born_year" name="year" max="2020" min="1910" class="year" placeholder="西暦">
+    <input type="number" id="born_month" name="month" class="month">
+    <input type="number" id="born_date" name="date" max="31" min="1" class="day">
     
     <p>パスワード</p>
-    <input type="password" id="password" name="password" style="width: 100%">
-    <input type="button" id="kakutei" value="送信">
+    <input type="password" id="password" name="password" class="form">
+    
+    <p>確認のためパスワードをもう一度入力してください</p>
+    <input type="password" id="password2" name="password2" class="form">
+    <p></p>
+    <input type="button" id="kakutei" value="送信" onclick="func()" class="button">
     
     <script type="text/javascript" src="newUser.js"></script>
     </form>
+    
+        <a><button class="newUser_button" onclick="window.location.href = 'login.html'">すでに会員の方はこちら</button></a>
     
   </body>
 </html>

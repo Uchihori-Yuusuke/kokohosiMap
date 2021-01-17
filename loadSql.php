@@ -17,7 +17,24 @@
     print "接続成功<br>";
 
     mysql_select_db("kokohosi",$d);
-    $r = mysql_query("INSERT INTO user VALUES('$name','$year','$month','$day','$sex','$pass','$mail')");
+
+    $mail_sql = mysql_query("SELECT mail FROM user WHERE mail='$mail'");//ログインidのメールアドレスが既に存在しているか確認する
+    $mail_data = mysql_fetch_array($mail_sql);
+    $mail_data2 = $mail_data['mail'];
+
+    if($mail === $mail_data2){
+?>
+      <script>
+         console.log('<?php echo $mail_data2;?>');
+         alert("このメールアドレスは既に使われています。");
+         window.location.href ='newUser.html';
+      </script>
+    
+<?php
+    }else{
+       
+      
+      $r = mysql_query("INSERT INTO user VALUES('$name','$year','$month','$day','$sex','$pass','$mail')");
 
     if ($r){
       print "INSERT成功<br>";
@@ -27,11 +44,15 @@
 
     mysql_close($d) or die("切断失敗");
     print "切断成功";
-?>
-
-//ユーザーページへ遷移する
+      ?>
+      //ユーザーページへ遷移する
 <script>
   window.onload = function(){
     window.location.href = 'userPage.php'
 }
 </script>
+      
+<?php
+        }
+?>
+

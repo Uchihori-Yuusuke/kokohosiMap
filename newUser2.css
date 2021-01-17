@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+header {
+  height: 13%;
+  background-color: #000000;
+  margin-bottom: 80px;
+}
+.topName{
+  float:left;
+  font-size: 30px;
+  margin-left: 0px;
+  color: white;
+}
+
+.form {
+  margin-top: 30px;
+  margin: auto;
+  font-size: 20px;
+}
+
+h3 {
+  text-align: center;
+}
+
+li {
+  list-style: none;
+  float: left;
+  margin: 5px;
+}
+
+ul {
+  margin: auto;
+}
+
+.button {
+  width: 250px;
+  height: 40px;
+  margin-top: 15px;
+  margin: auto;
+  background-color: black;
+  color: white;
+  font-size: 25px;
+  margin-bottom: 30px;
+}
+
+.title {
+  width: 400px;
+  height: 60px;
+  margin: auto;
+  text-align: center;
+  font-size: 40px;
+  padding-top: 30px;
+  border-bottom: solid 3px black;
+  margin-bottom: 40px;
+}

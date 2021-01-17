@@ -17,8 +17,8 @@
 <body>
   <script type="text/javascript" src="userPage.js"></script>
   <h2 class="count_pin_title">登録した店の数は<span id="count_pin" class="count_pin"></span>個です</h2>
-  <h2 class="title2">ほしいと思っている店をえらんでください</h2>
-  <form action="userMap.php" method="post" name="form1">
+  <h2 class="title2">需要を知りたい店をえらんでください</h2>
+  <form action="companyMap.php" method="post" name="form1">
   <ul>
     <li class="parent" onclick="func1(this)"><span>▶</span>小売業
       <ul id="kouri">
@@ -48,14 +48,12 @@
 
 <?php
 session_start();
-$name = $_SESSION["name"];
-$mail = $_SESSION["mail"];
+$name = $_SESSION["company_name"];
+$id = $_SESSION["id"];
 
 $d = mysql_connect("localhost","root","");
 mysql_select_db("kokohosi",$d);
 
-$count_pin_sql = mysql_query("SELECT COUNT(*) FROM pin WHERE mail = '$mail'");
-$count_pin = mysql_fetch_array($count_pin_sql);
 $store_sql = mysql_query("SELECT * FROM store");
 
 while ($store_data = mysql_fetch_array($store_sql)){
@@ -68,10 +66,7 @@ while ($store_data = mysql_fetch_array($store_sql)){
     parent = '<?php echo $parent;?>';
     store_id = '<?php echo $store_id;?>';
     user_name = '<?php echo $name;?>';
-    count_pin = '<?php echo $count_pin[0];?>';
-    console.log(count_pin);
     document.getElementById("user_name").innerHTML = user_name + "さん";
-    document.getElementById("count_pin").innerHTML = count_pin;
     var parent = document.getElementById(parent);
     
     parent.insertAdjacentHTML('afterbegin',`<li class=\"store_name\" onclick=\'func2(${store_id})\'>${store_name}</li><input type=\"radio\" name=\"radio1\" value=${store_id} id=\"${store_id}\" class=\"radio\">`);

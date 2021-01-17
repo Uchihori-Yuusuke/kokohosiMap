@@ -7,7 +7,8 @@
   var month = getMonth();
   var day = getDay();
   var pass = getPass();
-  var form = formTrue(name,mail,sex,year,month,day,pass);//フォームの空欄チェックメソッドを呼び出す
+  var pass2 = getPass2();
+  var form = formTrue(name,mail,sex,year,month,day,pass,pass2);//フォームの空欄チェックメソッドを呼び出す
   
 
   
@@ -57,20 +58,33 @@ function getPass(){  //パスワードを取得
   return input_pass;
 }
 
-function formTrue(name,mail,sex,year,month,day,pass){
+function getPass2(){  //パスワードを取得
+  var input_pass2 = document.getElementById("password2").value;
+  return input_pass2;
+}
+
+function formTrue(name,mail,sex,year,month,day,pass,pass2){
   //フォームに空欄がないかチェック
-  if(name.length===0 || mail.length===0 || sex.length ===0|| year.length ===0 || day.length === 0 || month.length === 0 || pass.length === 0) {
+  if(name.length===0 || mail.length===0 || sex.length ===0|| year.length ===0 || day.length === 0 || month.length === 0 || pass.length === 0 || pass2.length === 0) {
     console.log("1");
     alert("空欄があります");
     return;
   }
+  else if(year > 2021 || year < 1921 || month > 12 || month < 1 || day < 1 || day > 31){
+          alert("生年月日が無効です");
+          }
   else if(pass.length <= 7){
     console.log("2");
     alert("パスワードが短すぎます");
     return;
   }
+  else if(pass !== pass2){
+    alert("パスワードが一致しません");
+    console.log("3")
+    return;
+  }
   else{
-    console.log("3");
+    console.log("4");
     document.form1.submit();//空欄がない場合次画面へ遷移する
   }
 }

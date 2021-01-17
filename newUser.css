@@ -1,0 +1,100 @@
+@charset "utf-8";
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 170%;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+header {
+  height: 7%;
+  background-color: #000000;
+}
+.topName{
+  float:left;
+  font-size: 30px;
+  margin-left: -30px;
+  color: white;
+}
+
+h2 {
+  width: 400px;
+  height: 60px;
+  margin: auto;
+  text-align: center;
+  font-size: 40px;
+  padding-top: 30px;
+  border-bottom: solid 3px black;
+  margin-bottom: 40px;
+}
+
+form {
+  background-color:#EEEEEE;
+  width: 500px;
+  height: 800px;
+  margin: auto;
+  margin-top: 100px;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+}
+
+.form {
+  width:240px;
+  height: 30px;
+  margin-left:120px;
+}
+
+p {
+  text-align: center;
+}
+
+.form_radio{
+  margin-left: 140px;
+}
+
+.button {
+  width: 250px;
+  height: 40px;
+  margin-left:120px;
+  margin-top: 30px;
+  background-color: black;
+  color: white
+}
+
+.year {
+  margin-left: 50px;
+  width: 150px;
+  height: 30px;
+  font-size: 15px;
+}
+
+.month {
+  width: 100px;
+  height: 30px;
+  font-size: 15px;
+}
+
+.day {
+  width: 100px;
+  height: 30px;
+  font-size: 15px;
+}
+
+a {
+  display: block;
+  width:100%;
+  text-align: center;
+  margin-top:0px;
+}
+
+.newUser_button {
+  width: 250px;
+  height: 40px;
+  display: inline-block;
+  text-align: center;
+}

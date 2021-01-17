@@ -2,28 +2,30 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="newUser2.css">
     <title>ここほしマップ</title>
   </head>
-  
+  <header>
+      <h2 class="topName">ここホシ</h2>
+  </header>
   <body>
 
    <?php   //postされたデータを受け取る
     session_start();
     
-    $name = (string)$_POST['name'];
+    $name = htmlspecialchars($_POST['name'],ENT_QUOTES);
     
-    $mail = $_POST['email'];
+    $mail = htmlspecialchars($_POST['email'],ENT_QUOTES);
     
-    $sex =  $_POST['group1'];
+    $sex =  htmlspecialchars($_POST['group1'],ENT_QUOTES);
     
-    $pass = $_POST['password'];
+    $pass = htmlspecialchars($_POST['password'],ENT_QUOTES);
     
-    $year = $_POST['year'];
+    $year = htmlspecialchars($_POST['year'],ENT_QUOTES);
     
-    $month = $_POST['month'];
+    $month = htmlspecialchars($_POST['month'],ENT_QUOTES);
     
-    $day = $_POST['date'];
+    $day = htmlspecialchars($_POST['date'],ENT_QUOTES);
     
     $_SESSION["name"] = $name;
     $_SESSION["mail"] = $mail;
@@ -34,23 +36,27 @@
     $_SESSION["day"] = $day;
 
 ?>
-   
+   <h2 class="title">確認</h2>
     <h3>名前</h3>
-    <p id="name"></p>
+    <p id="name" class="form"></p>
     <h3>メールアドレス</h3>
-    <p id="mail"></p>
+    <p id="mail" class="form"></p>
     <h3>性別</h3>
-    <p id="sex"></p>
+    <p id="sex" class="form"></p>
     <h3>生年月日</h3>
-    <p id="year"></p>
-    <p id="month"></p>
-    <p id ="day"></p>
+    <ul>
+    <li><p id="year" class="form"></p></li>
+    <li><p id="month" class="form"></p></li>
+    <li><p id ="day" class="form"></p></li>
+    </ul>
     <h3>パスワード</h3>
-    <p id="pass"></p>
+    <p id="pass"  class="form"></p>
     <h3>間違いがない場合は確定ボタンを押してください</h3>
-    <input type="button" onclick="location.href='loadSql.php'" value="確定">
-    <input type="button" onclick="location.href='newUser.html'" value="戻る">
-    
+    <ul>
+    <li><input type="button" onclick="location.href='loadSql.php'" value="確定" class=button></li>
+    <li><input type="button" onclick="location.href='newUser.html'" value="戻る" class="button">
+    </li>
+    </ul>
     
     <script>//postで受けっとった値を表示
       let name = '<?php echo $name;?>';
@@ -63,7 +69,9 @@
 
       document.getElementById('name').innerHTML = name;
       
-      if(sex === 1){
+      console.log(sex);
+      
+      if(sex == 1){
       document.getElementById('sex').innerHTML = "男性";
       }else{
       document.getElementById('sex').innerHTML = "女性";
@@ -74,11 +82,11 @@
 
       document.getElementById('pass').innerHTML = pass;
       
-      document.getElementById('year').innerHTML = year;
+      document.getElementById('year').innerHTML = year + "年";
       
-      document.getElementById('month').innerHTML = month;
+      document.getElementById('month').innerHTML = month + "月";
       
-      document.getElementById('day').innerHTML = day;
+      document.getElementById('day').innerHTML = day + "日";
     </script>
     
     

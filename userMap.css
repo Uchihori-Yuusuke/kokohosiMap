@@ -1,0 +1,115 @@
+/* Set the size of the div element that contains the map */
+#map {
+  height: 102%;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+  position: absolute;
+  /*bottom: -40px;*/
+  /*z-index: -2;*/
+  z-index: 0;
+}
+
+body{
+  position: relative;
+  width: 100%;
+  top: -60px;
+}
+
+
+.button {
+  width:280px;
+  height: 80px;
+  background-color: white;
+  font-size: 40px;
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  margin-left: 40%;
+}
+
+.lng .lat .email {
+  visibility: hidden;
+}
+
+
+.ham {
+	position: relative;
+	width: 60px;
+	height: 60px;
+	cursor: pointer;
+	background-color: black;
+    bottom: -60;
+    z-index: 2;
+}
+.ham_line {
+	position: absolute;
+	left: 10px;
+	width: 40px;
+	height: 3px;
+	background-color: white;
+    transition: all 0.3s;
+}
+.ham_line1 {
+	top: 15px;
+}
+.ham_line2 {
+	top: 28px;
+}
+.ham_line3 {
+	top: 41px;
+}
+.clicked .ham {
+	display: none;
+}
+.clicked .ham_line2 {
+	width: 0px;
+}
+.clicked .ham_line3 {
+	transform: rotate(-45deg);
+	top: 20px;
+}
+.menu {
+	position: fixed;
+	width: 300px;
+	height: 100%;
+	left: -400px;
+	background-color: white;
+	transition: all 0.3s;
+    position: absolute;
+    z-index: 1;
+}
+
+.clicked .menu {
+	left: 8px;
+}
+
+li {
+  list-style: none;
+}
+
+form {
+  display: none;
+}
+
+.hum_meny {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.button_margin{
+
+}
+
+.username{
+  height: 63px;
+  width: auto;
+  font-size: 30px;
+  margin-top: 50px;
+  margin-bottom: 80px;
+  border-bottom: solid 2px black;
+}
+
+.hum_meny{
+  font-size: 33px;
+}
