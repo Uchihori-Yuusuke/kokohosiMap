@@ -7,26 +7,27 @@ var markers = [];
 const imagePath = "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m";
 var pin_flag = 0;
 var markerClusterer;
+var heat_data = [];
+let heatmap;
+
 
 function initMap() {
   navigator.geolocation.getCurrentPosition(cmanGetOk,cmanGetErr)//現在位置を取得するメソッド
   
-const ham = document.getElementById('ham');
-const menu_wrapper = document.getElementById('menu_wrapper');
-const body = document.getElementById('body');
-const button = document.getElementById('button');
-ham.addEventListener('click', function() {
+    const ham = document.getElementById('ham');
+    const menu_wrapper = document.getElementById('menu_wrapper');
+    const body = document.getElementById('body');
+    const button = document.getElementById('button');
+    ham.addEventListener('click', function() {
     
-    if(ham_flag === 0){
-      ham_flag = 1;
-      humMenu();
-      ham.style.display = "none";
-      body.style.top = "0px";
-      button.style.bottom = "60px";
-    }
-});
-
-  
+      if(ham_flag === 0){
+        ham_flag = 1;
+        humMenu();
+        ham.style.display = "none";
+        body.style.top = "0px";
+        button.style.bottom = "60px";
+      }
+  });
 }
 
 
@@ -50,8 +51,7 @@ function cmanGetOk(argPos){//現在位置の取得に成功したときに呼び
     clickableIcons:true,
   });
   
-
-  pin();
+    add_pin();//ピンを設置
   
     map.addListener('click',function(e){//マップをクリックしたときの処理
       const ham = document.getElementById('ham');
@@ -69,33 +69,34 @@ function cmanGetOk(argPos){//現在位置の取得に成功したときに呼び
        this.panTo(e.latLng);*/
       }
   });
-  
-
-  
-  
-  
-  
 }
 
 
-function change_botton(){
+function change_botton(){//マップ切り替えボタンを押したとき
   if(pin_flag === 0){
     clearMarkers();
-/*    for (var i = 0; i < markers.length; i++) {
-      markerCluster.removeMarker(markers[i]);
-    }*/
-    //markers = [];
     markerClusterer.clearMarkers();
+    heat_map();
     pin_flag = 1;
-    console.log(0);
   }else{
     showMarkers();
-    //pin();
-     markerClusterer = new MarkerClusterer(map, markers, {imagePath: imagePath});
+    marker_clusterer();
+    heatmap.setMap(heatmap.getMap() ? null : map);
     pin_flag = 0;
-    console.log(1);
   }
 }
+
+function marker_clusterer(){
+  markerClusterer = new MarkerClusterer(map, markers, {imagePath: imagePath});
+}
+
+function heat_map(){
+  heatmap = new google.maps.visualization.HeatmapLayer({
+      data: heat_data,
+      map: map,
+  });
+}
+
 
 function setMapOnAll(map1) {
   for (let i = 0; i < markers.length; i++) {
@@ -104,28 +105,21 @@ function setMapOnAll(map1) {
   }
 }
 
-// Removes the markers from the map, but keeps them in the array.
 function clearMarkers() {
   setMapOnAll(null);
 }
 
-// Shows any markers currently in the array.
 function showMarkers() {
   setMapOnAll(map);
 }
 
-function deleteMarkers() {
-  clearMarkers();
-  markers = [];
-  console.log(markers);
-}
 
 function cmanGetErr(argErr){//現在位置取得に失敗したときに呼びだされる関数
 
 }
 
 
-function pin(){
+function add_pin(){//最初に呼びだされるピンを設置する関数
   
     var lat_lng1 = lat_lng.split('[').join('');
     var lat_lng2 = lat_lng1.split(']').join('');
@@ -140,6 +134,9 @@ function pin(){
     for(var j = 0; lat_lng5.length/2 > j; j++){
       
     var pin_location = { lat: lat_lng5[lat_h], lng: lat_lng5[lng_h] };
+      
+      heat_data.push(new google.maps.LatLng(lat_lng5[lat_h],lat_lng5[lng_h]));
+      
       lat_h = lat_h + 2;
       lng_h = lng_h + 2;
     var marker = new google.maps.Marker({
@@ -152,7 +149,6 @@ function pin(){
   lat_h = 0;
   lng_h = 1;
   
- markerClusterer = new MarkerClusterer(map, markers, {imagePath: imagePath});
-
+  marker_clusterer();
 }
 
