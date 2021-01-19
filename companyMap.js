@@ -5,7 +5,9 @@ var ham_flag = 0;
 var lat_lng5 = [];
 var markers = [];
 const imagePath = "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m";
-// Initialize and add the map
+var pin_flag = 0;
+var markerClusterer;
+
 function initMap() {
   navigator.geolocation.getCurrentPosition(cmanGetOk,cmanGetErr)//現在位置を取得するメソッド
   
@@ -20,6 +22,7 @@ ham.addEventListener('click', function() {
       humMenu();
       ham.style.display = "none";
       body.style.top = "0px";
+      button.style.bottom = "60px";
     }
 });
 
@@ -59,14 +62,63 @@ function cmanGetOk(argPos){//現在位置の取得に成功したときに呼び
          ham_flag = 0;
          ham.style.display = "";
          body.style.top = "-60px";
+         button.style.bottom = "0px";
        }else{
-        
+       /*lat = e.latLng.lat();
+       lng = e.latLng.lng();
+       this.panTo(e.latLng);*/
       }
   });
+  
+
+  
+  
+  
+  
 }
 
 
+function change_botton(){
+  if(pin_flag === 0){
+    clearMarkers();
+/*    for (var i = 0; i < markers.length; i++) {
+      markerCluster.removeMarker(markers[i]);
+    }*/
+    //markers = [];
+    markerClusterer.clearMarkers();
+    pin_flag = 1;
+    console.log(0);
+  }else{
+    showMarkers();
+    //pin();
+     markerClusterer = new MarkerClusterer(map, markers, {imagePath: imagePath});
+    pin_flag = 0;
+    console.log(1);
+  }
+}
 
+function setMapOnAll(map1) {
+  for (let i = 0; i < markers.length; i++) {
+    markers[i].setMap(map1);
+    
+  }
+}
+
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
+  setMapOnAll(null);
+}
+
+// Shows any markers currently in the array.
+function showMarkers() {
+  setMapOnAll(map);
+}
+
+function deleteMarkers() {
+  clearMarkers();
+  markers = [];
+  console.log(markers);
+}
 
 function cmanGetErr(argErr){//現在位置取得に失敗したときに呼びだされる関数
 
@@ -79,25 +131,15 @@ function pin(){
     var lat_lng2 = lat_lng1.split(']').join('');
     var lat_lng3 = lat_lng2.split('"').join('');
     var lat_lng4 = lat_lng3.split(',');
-    console.log(lat_lng4);
   
     for(var i = 0; lat_lng4.length > i + 1; i = i + 2){
     lat_lng5.push(Number(lat_lng4[i]),Number(lat_lng4[i + 1]));
     }
-    console.log(lat_lng5);
-    /*const pin_location = { lat: lat_lng5[0], lng: lat_lng5[1] };
-    console.log(pin_location);
-   var marker = new google.maps.Marker({
-    position: pin_location,
-    map: map,
-  });*/
     var lat_h = 0;
     var lng_h = 1;
     for(var j = 0; lat_lng5.length/2 > j; j++){
       
     var pin_location = { lat: lat_lng5[lat_h], lng: lat_lng5[lng_h] };
-      console.log(j);
-      console.log(pin_location);
       lat_h = lat_h + 2;
       lng_h = lng_h + 2;
     var marker = new google.maps.Marker({
@@ -107,7 +149,10 @@ function pin(){
       markers.push(marker);
     }
   
-  const markerClusterer = new MarkerClusterer(map, markers, {imagePath: imagePath});
+  lat_h = 0;
+  lng_h = 1;
+  
+ markerClusterer = new MarkerClusterer(map, markers, {imagePath: imagePath});
 
 }
 

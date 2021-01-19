@@ -32,6 +32,9 @@ $lat_lng = json_encode($lat_lng);
 	<span class="ham_line ham_line2"></span>
 	<span class="ham_line ham_line3"></span>
 </div>
+      <div class="button_margin">
+    <input type="button" id="button" value="マップ切り替え" class="button" onclick=" change_botton()">
+    </div>
 <div class="menu_wrapper" id="menu_wrapper">
 	<div class="menu">
     	<ul>
