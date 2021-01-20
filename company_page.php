@@ -16,9 +16,38 @@
 </header>
 <body>
   <script type="text/javascript" src="userPage.js"></script>
-  <h2 class="count_pin_title">登録した店の数は<span id="count_pin" class="count_pin"></span>個です</h2>
   <h2 class="title2">需要を知りたい店をえらんでください</h2>
   <form action="companyMap.php" method="post" name="form1">
+  <select name="age1">
+    <option value="0">すべて</option>
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <option value="30">30</option>
+    <option value="40">40</option>
+    <option value="50">50</option>
+    <option value="60">60</option>
+  </select>
+    <select name="age2">
+    <option value="0">すべて</option>
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <option value="30">30</option>
+    <option value="40">40</option>
+    <option value="50">50</option>
+    <option value="60">60</option>
+  </select>
+  <select name="sex">
+    <option value="0">すべて</option>
+    <option value="1">男</option>
+    <option value="2">女</option>
+  </select>
+  <select name="how">
+    <option value="0">すべて</option>
+    <option value="1">1か月以内</option>
+    <option value="3">3か月以内</option>
+    <option value="6">半年以内</option>
+    <option value="12">1年以内</option>
+  </select>
   <ul>
     <li class="parent" onclick="func1(this)"><span>▶</span>小売業
       <ul id="kouri">

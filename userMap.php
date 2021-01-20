@@ -1,7 +1,7 @@
 <?php
 session_start();
 $name = $_SESSION["name"];
-$id = $_SESSION["id"];
+$mail = $_SESSION["mail"];
 $store_id = $_POST['radio1'];
  ?>
 
@@ -50,7 +50,7 @@ $store_id = $_POST['radio1'];
     
     <script>
       let name = '<?php echo $name;?>';
-      let id='<?PHP echo $id;?>';
+      let mail='<?PHP echo $mail;?>';
       let store_id ='<?php echo $store_id;?>';
       
       document.getElementById('mail').value = mail;
