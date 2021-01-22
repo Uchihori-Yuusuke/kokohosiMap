@@ -22,11 +22,12 @@ $lng = $_POST['lng'];
     $age =date("Y") - $get_user['bd_year'];
     $how_year = date("Y");
     $how_month = date("n");
+    $how = date("Y/m/d");
 
     if(strlen($get_data['mail']) > 0){
-      mysql_query("UPDATE pin SET lat = '$lat',lng = '$lng',sex = '$sex',age = '$age',how_year='$how_year',how_month='$how_month' WHERE mail = '$mail' AND store_id = '$store_id'");
+      mysql_query("UPDATE pin SET lat = '$lat',lng = '$lng',sex = '$sex',age = '$age',how='$how',how_month='$how_month' WHERE mail = '$mail' AND store_id = '$store_id'");
     }else{
-    $r = mysql_query("INSERT INTO pin VALUES ('$mail','$store_id','$lat','$lng','$sex','$age','$how_year','$how_month')");
+    $r = mysql_query("INSERT INTO pin VALUES ('$mail','$store_id','$lat','$lng','$sex','$age','$how')");
     }
  ?>
  

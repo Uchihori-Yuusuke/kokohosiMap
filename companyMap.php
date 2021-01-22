@@ -11,11 +11,54 @@ $how = $_POST["how"];
 $d = mysql_connect("localhost","root","");
 mysql_select_db("kokohosi",$d);
 
-$pin_sql = mysql_query("SELECT * FROM pin WHERE store_id='$store_id'");
 
-while($getPin = mysql_fetch_array($pin_sql)){
+
+if($age1 == 0 and $age2 == 0 and $sex == 0 and $how == 0){
+    $pin_sql = mysql_query("SELECT * FROM pin WHERE store_id='$store_id'");
+  }else if($age1 != 0 and $age2 == 0 and $sex == 0 and $how == 0){
+        $pin_sql = mysql_query("SELECT * FROM pin WHERE store_id='$store_id' AND age >= '$age1'");
+  }else if($age1 != 0 and $age2 != 0 and $sex == 0 and $how == 0){
+        $pin_sql = mysql_query("SELECT * FROM pin WHERE store_id='$store_id' AND age >= '$age1' AND age <= '$age2'");
+  }
+  else if($age1 != 0 and $age2 != 0 and $sex != 0 and $how == 0){
+        $pin_sql = mysql_query("SELECT * FROM pin WHERE store_id='$store_id' AND age >= '$age1' AND age <= '$age2' AND sex ='$sex'");
+  }
+  else if($age1 != 0 and $age2 != 0 and $sex != 0 and $how != 0){
+        $pin_sql = mysql_query("SELECT * FROM pin WHERE store_id='$store_id' AND age >= '$age1' AND age <= '$age2' AND sex ='$sex' AND how >= (NOW() - INTERVAL '$how' MONTH)");
+  }
+  else if($age1 != 0 and $age2 != 0 and $sex == 0 and $how != 0){
+        $pin_sql = mysql_query("SELECT * FROM pin WHERE store_id='$store_id' AND age >= '$age1' AND age <= '$age2' AND how >= (NOW() - INTERVAL '$how' MONTH)");
+  }
+  else if($age1 != 0 and $age2 == 0 and $sex == 0 and $how != 0){
+        $pin_sql = mysql_query("SELECT * FROM pin WHERE store_id='$store_id' AND age >= '$age1' AND how >= (NOW() - INTERVAL '$how' MONTH)");
+  }
+  else if($age1 != 0 and $age2 == 0 and $sex != 0 and $how != 0){
+        $pin_sql = mysql_query("SELECT * FROM pin WHERE store_id='$store_id' AND age >= '$age1' AND sex ='$sex' AND how >= (NOW() - INTERVAL '$how' MONTH)");
+  }
+  else if($age1 == 0 and $age2 != 0 and $sex == 0 and $how == 0){
+    $pin_sql = mysql_query("SELECT * FROM pin WHERE store_id='$store_id' AND age <= '$age2'");
+  }
+  else if($age1 == 0 and $age2 != 0 and $sex != 0 and $how == 0){
+    $pin_sql = mysql_query("SELECT * FROM pin WHERE store_id='$store_id' AND age <= '$age2' AND sex ='$sex'");
+  }
+  else if($age1 == 0 and $age2 != 0 and $sex != 0 and $how =! 0){
+    $pin_sql = mysql_query("SELECT * FROM pin WHERE store_id='$store_id' AND age <= '$age2' AND sex ='$sex' AND how >= (NOW() - INTERVAL '$how' MONTH)");
+  }
+  else if($age1 == 0 and $age2 != 0 and $sex == 0 and $how != 0){
+    $pin_sql = mysql_query("SELECT * FROM pin WHERE store_id='$store_id' AND age <= '$age2' AND how >= (NOW() - INTERVAL '$how' MONTH)");
+  }
+  else if($age1 == 0 and $age2 == 0 and $sex != 0 and $how == 0){
+    $pin_sql = mysql_query("SELECT * FROM pin WHERE store_id='$store_id' AND sex ='$sex'");
+  }
+  else if($age1 == 0 and $age2 == 0 and $sex != 0 and $how != 0){
+    $pin_sql = mysql_query("SELECT * FROM pin WHERE store_id='$store_id' AND sex ='$sex' AND how >= (NOW() - INTERVAL '$how' MONTH)");
+  }
+  else if($age1 == 0 and $age2 == 0 and $sex == 0 and $how != 0){
+    $pin_sql = mysql_query("SELECT * FROM pin WHERE store_id='$store_id' AND how >= (NOW() - INTERVAL '$how' MONTH)");
+  }
+  while($getPin = mysql_fetch_array($pin_sql)){
   array_push($lat_lng,array($getPin['lat'],$getPin['lng']));
-}
+  }
 $lat_lng = json_encode($lat_lng);
  ?>
 
@@ -44,7 +87,7 @@ $lat_lng = json_encode($lat_lng);
     	<ul>
         	<li><h3 href="#1" id="username" class="username"></h3></li>
         	<li><p></p></li>
-        	<li><a href="userPage.php" class="hum_meny">戻る</a></li>
+        	<li><a href="company_page.php" class="hum_meny">戻る</a></li>
         	<li><p></p></li>
         	<li><a href="topSite.html" class="hum_meny">ログアウト</a></li>
         	<li><p></p></li>
