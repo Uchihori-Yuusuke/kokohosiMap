@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sample</title>
-  <link rel="stylesheet" href="userPage.css">
+  <title>ここほしマップ</title>
+  <link rel="stylesheet" href="company_page.css">
 </head>
 <header>
       <ul>
@@ -17,7 +17,18 @@
 <body>
   <script type="text/javascript" src="userPage.js"></script>
   <h2 class="title2">需要を知りたい店をえらんでください</h2>
+
   <form action="companyMap.php" method="post" name="form1">
+    <div class="gomi1">
+      <ul class="sort_title">
+    <li class="kagen">下限年齢</li>
+    <li class="zyougen">上限年齢</li>
+    <li class="seibetu">性別</li>
+    <li class="kikan">期間指定</li>
+  </ul>
+    <div>
+  <ul>
+  <li class="age">
   <select name="age1">
     <option value="0">すべて</option>
     <option value="10">10</option>
@@ -27,6 +38,9 @@
     <option value="50">50</option>
     <option value="60">60</option>
   </select>
+  </li>
+
+   <li class="age">
     <select name="age2">
     <option value="0">すべて</option>
     <option value="10">10</option>
@@ -36,11 +50,15 @@
     <option value="50">50</option>
     <option value="60">60</option>
   </select>
+  </li>
+  <li class="age">
   <select name="sex">
     <option value="0">すべて</option>
     <option value="1">男</option>
     <option value="2">女</option>
   </select>
+  </li>
+  <li class="age">
   <select name="how">
     <option value="0">すべて</option>
     <option value="1">1か月以内</option>
@@ -48,15 +66,21 @@
     <option value="6">半年以内</option>
     <option value="12">1年以内</option>
   </select>
+  </li>
+  </ul>
+ </div>
   <ul>
+   <div class="menu1">
     <li class="parent" onclick="func1(this)"><span>▶</span>小売業
       <ul id="kouri">
       </ul>
     </li>
-    <li class="parent" onclick="func1(this)"><span>▶</span>飲食店
+    <li class="parent" onclick="func1(this)" id="insyoku"><span>▶</span>飲食店
       <ul id="restaurant">
       </ul>
     </li>
+    </div>
+    <div>
     <li class="parent" onclick="func1(this)"><span>▶</span>娯楽
       <ul id="goraku">
       </ul>
@@ -65,13 +89,20 @@
       <ul id="sarbisu">
       </ul>
     </li>
+     </div>
+     <div>
       <li class="parent" onclick="func1(this)"><span>▶</span>その他
       <ul id="sonota">
       </ul>
     </li>
+    </div>
   </ul>
+  </div>
   </form>
 </body>
+<footer>
+  
+</footer>
 </html>
 
 
